@@ -34,24 +34,32 @@ class Single :
             # [Player and Computer guessing]
             # Player
             print(f"[{player}] Guess the number")
-            player_guess = int(input(">> "))
+            # player_guess = int(input(">> "))
+            player_guess = rand_num
+            print(">> " + str(player_guess))
             # Computer
             print(f"[Computer] Guess the number")
-            com_guess = Single.random_num(1, 10)
+            # com_guess = Single.random_num(1, 10)
+            com_guess = rand_num
             loader.time_sleep(1, 4)
-            computer_guess = print(">> " + str(com_guess))
+            print(">> " + str(com_guess))
             
             # [ Draw rounds ]
             if player_guess == rand_num == com_guess :
-                Single.draw_round(rand_num, draw, player_win, com_win)
+                draw = draw + 1
+                com_win = com_win + 1
+                player_win = player_win + 1
+                Single.draw_round(rand_num)
 
             # [ Player win rounds ]
             elif player_guess == rand_num :
-                Single.player_round_win(player, rand_num, player_win)
+                player_win = player_win + 1
+                Single.player_round_win(player, rand_num)
 
             # [ Computer win rounds ]
             elif com_guess == rand_num :
-                Single.com_round_win(rand_num, com_win)
+                com_win = com_win + 1
+                Single.com_round_win(rand_num)
 
             # [ Both wrong ]
             else :
@@ -72,7 +80,6 @@ class Single :
             Single.computer_win(player, player_win, com_win)
 
         
-
 
     ## Normal Mode
     def Normal(name) :
@@ -104,33 +111,24 @@ class Single :
     ## METHODS ROUNDS ##
     @staticmethod
     # Player round win 
-    def player_round_win(player, number, win) :
-        player_win = win + 1
+    def player_round_win(player, number) :
         loader.time_sleep(1, 3)
-        cprint("\n\t-- {player} win --", 'white', file=sys.stderr)
+        cprint(f"\n\t-- {player} win --", 'white', file=sys.stderr)
         print("\t-- Number : " + str(number)), loader.time_sleep(1, 2)
-        return player_win
 
     @staticmethod
     # Computer round win
-    def com_round_win(number, win) :
-        com_win = win + 1
+    def com_round_win(number) :
         loader.time_sleep(1, 3)
         cprint("\n\t-- Com win --", 'white', file=sys.stderr)
         print("\t-- Number : " + str(number)), loader.time_sleep(1, 2)
-        return com_win
 
     @staticmethod
     # Draw round
-    def draw_round(number, draw, p_win, c_win) :
-        draw = draw + 1
-        player_win = p_win + 1
-        com_win    = c_win + 1
-
+    def draw_round(number) :
         loader.time_sleep(1, 3)
         cprint("\n\t-- Draw --", 'white', file=sys.stderr)
-        print("\tNumber : " + str(number)), loader.time_sleep(1, 2)
-        return {'draw':draw, 'player_win':player_win, 'com_win':com_win}
+        print("\t-- Number : " + str(number)), loader.time_sleep(1, 2)
     
     @staticmethod
     # Wrong
@@ -145,22 +143,25 @@ class Single :
     # Player win
     def player_win(player, player_win, com_win) :
         loader.loading_message()
-        cprint(f"\=== {player} Win ! ===", 'green', file=sys.stderr)
-        print(f"[{player}] Rounds win : " + str(player_win))
-        print(f"[Computer] Rounds win : " + str(com_win))
+        cprint(f"■-------- {player} Win ! --------■\n", 'green', file=sys.stderr)
+        print(f"■ [{player}] Rounds win : " + str(player_win))
+        print(f"■ [Computer] Rounds win : " + str(com_win))
+        print(f"■")
 
     @staticmethod
     # Computer win
     def computer_win(player, player_win, com_win) :
         loader.loading_message()
-        cprint(f"=== Computer Win ! ===", 'green', file=sys.stderr)
-        print(f"[Computer] Rounds win : " + str(com_win))
-        print(f"[{player}] Rounds win : " + str(player_win))
+        cprint(f"■-------- Computer Win ! --------■\n", 'green', file=sys.stderr)
+        print(f"■ [Computer] Rounds win : " + str(com_win))
+        print(f"■ [{player}] Rounds win : " + str(player_win))
+        print(f"■")
 
     @staticmethod
     # Draw
     def draw(player, player_win, com_win) :
         loader.loading_message()
-        cprint(f"======= Draw ! =======", 'green', file=sys.stderr)
-        print(f"[Computer] Rounds win : " + str(com_win))
-        print(f"[{player}] Rounds win : " + str(player_win))
+        cprint(f"■-------- Draw ! --------■\n", 'green', file=sys.stderr)
+        print(f"■ [Computer] Rounds win : " + str(com_win))
+        print(f"■ [{player}] Rounds win : " + str(player_win))
+        print(f"■")
