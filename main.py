@@ -9,7 +9,6 @@ def main() :
     loader.game_start_message('green')
 
     # Entering the Game
-    loader.time_sleep(2, 3, True)
     menu.Menu()
 
 if __name__ == "__main__" :
