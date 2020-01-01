@@ -8,35 +8,29 @@ def game_start_message(color = 'green') :
     print("[====== Entering the Game ======]\n")
     cprint(" Please wait, checking data ...\n", color, file=sys.stderr)
     print("[===============================]")
+    time_sleep(1, 3), system("cls")
 
-def loading_message(color = 'green', clear = False) :
-    if clear :
-        system("cls")
-        print("[==============================]\n")
-        cprint(" Please wait, checking data ...\n", color, file=sys.stderr)
-        print("[==============================]"), system("cls")
+def player_loading() :
+    system("cls")
+    print("[== Preparing ==]\n")
+    cprint(" Please wait ...\n", 'green', file=sys.stderr)
+    print("[===============]")  
+    time_sleep(1, 3), system("cls")
 
+def loading_message(color = 'green') :
     system("cls")
     print("[==============================]\n")
     cprint(" Please wait, checking data ...\n", color, file=sys.stderr)
     print("[==============================]")
+    time_sleep(1, 3), system("cls")
 
-def loading_message_tips(color = 'green', clear = False) :
-    if clear :
-        system("cls")
-        print("[==============================]\n")
-        cprint(" --Tips: Happy New year 2k20--\n", color, file=sys.stderr)
-        cprint(" Please wait, checking data ...\n", color, file=sys.stderr)
-        print("[==============================]"), system("cls")
-
+def loading_message_tips(color = 'green') :
     system("cls")
     print("[==============================]\n")
     cprint(" --Tips: Happy New year 2k20--\n", color, file=sys.stderr)
     cprint(" Please wait, checking data ...\n", color, file=sys.stderr)
     print("[==============================]")
-
-def error_message(color = 'red') :
-    cprint("\n\nThere went error, closing the game", color, file=sys.stderr)
+    time_sleep(1, 3), system("cls")
 
 def time_sleep(min_val, max_val, clear = False) :
     if clear :
@@ -45,3 +39,7 @@ def time_sleep(min_val, max_val, clear = False) :
 
     sleep = time.sleep(random.randint(min_val, max_val))
     return sleep
+
+def error_message(color = 'red') :
+    cprint("\n\nThere went error, closing the game", color, file=sys.stderr)
+    
