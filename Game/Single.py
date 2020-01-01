@@ -79,22 +79,81 @@ class Single :
         
 
     ## Normal Mode
-    def Normal(name) :
-        print("\n========= Single Player =========\n")
+    def Normal(player) :
+        global player_guess, player_win, com_guess, com_win, draw, rounds
+
+        print("\n[======= Single Player =======]\n")
         print("■----- Difficulity: Normal -----■")
-        print(f"■----- Player-name: {name}")
+        print(f"■----- Player-name: {player}\n")
+
+        while rounds != 6 :
+            rand_num = Single.random_num(1, 20)
+            loader.time_sleep(1, 2)
+            cprint(f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
+            print("Guess the number between 1 - 20\n")
+
+            # [ Player and Computer guessing ]
+            # Player
+            print(f"[{player}] Guess the number")
+            player_guess = int(input(">> "))
+            # Computer
+            print(f"[Computer] Guess the number")
+            if rand_num in range(1, 10) :
+                com_guess = int(Single.random_num(1, 10))
+            else :
+                com_guess = int(Single.random_num(11, rand_num))
+            loader.time_sleep(1, 3)
+            print(">> " + str(com_guess))
+
+            # [ Draw rounds ]
+            if player_guess == rand_num == com_guess :
+                draw = draw + 1
+                com_win = com_win + 1
+                player_win = player_win + 1
+                Single.draw_round(rand_num)
+
+            # [ Player win rounds ]
+            elif player_guess == rand_num :
+                player_win = player_win + 1
+                Single.player_round_win(player, rand_num)
+
+            # [ Computer win rounds ]
+            elif com_guess == rand_num :
+                com_win = com_win + 1
+                Single.com_round_win(rand_num)
+
+            # [ Both wrong ]
+            else :
+                Single.wrong(rand_num)
+
+            rounds = rounds + 1
+            ## Rounds Ended ##
+
+        ## Count the numbers of wins
+        # [ Draw ]
+        if player_win == com_win :
+            Single.draw(player, player_win, com_win)
+        # [ Player win ]
+        elif player_win > com_win :
+            Single.player_win(player, player_win, com_win)
+        # [ Computer win ]
+        else :
+            Single.computer_win(player, player_win, com_win)
+
+                
+
 
     ## Hard Mode
     def Hard(name) :
-        print("\n======== Single Player ========\n")
+        print("\n[======= Single Player =======]\n")
         print("■----- Difficulity: Hard -----■")
-        print(f"■----- Player-name: {name}")
+        print(f"■----- Player-name: {player}\n")
 
     ## Master Mode
     def master(name) :
-        print("\n========= Single Player =========\n")
+        print("\n[======= Single Player =======]\n")
         print("■----- Difficulity: Master -----■")
-        print(f"■----- Player-name: {name}")
+        print(f"■----- Player-name: {player}\n")
 
     
 
