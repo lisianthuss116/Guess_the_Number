@@ -34,13 +34,11 @@ class Single :
             # [Player and Computer guessing]
             # Player
             print(f"[{player}] Guess the number")
-            # player_guess = int(input(">> "))
-            player_guess = rand_num
+            player_guess = int(input(">> "))
             print(">> " + str(player_guess))
             # Computer
             print(f"[Computer] Guess the number")
-            # com_guess = Single.random_num(1, 10)
-            com_guess = rand_num
+            com_guess = Single.random_num(1, 10)
             loader.time_sleep(1, 4)
             print(">> " + str(com_guess))
             
