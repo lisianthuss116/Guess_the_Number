@@ -35,7 +35,6 @@ class Single :
             # Player
             print(f"[{player}] Guess the number")
             player_guess = int(input(">> "))
-            print(">> " + str(player_guess))
             # Computer
             print(f"[Computer] Guess the number")
             com_guess = Single.random_num(1, 10)
