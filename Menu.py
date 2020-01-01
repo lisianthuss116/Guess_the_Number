@@ -10,7 +10,7 @@ is_play   = False
 system("cls")
 
 def Menu() :
-    print("\n====== GUESS the NUMBERS ======\n")
+    print("\n[===== GUESS the NUMBERS =====]\n")
     print("■----------- Menus -----------■")
     print("|                             |")
     print("| 1 ) Singleplayer [computer] |")
@@ -34,3 +34,4 @@ def Choice(select, is_play = False) :
     elif select == "2" :
         loader.time_sleep(2, 3, True)
         Selection.Multiplayer(is_play, play_type = select)
+        
