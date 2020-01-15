@@ -101,39 +101,7 @@ class Selection :
             loader.player_loading()
 
             if players == "2" :
-                set_player_name = 1
-                player_one_name = ""
-                player_two_name = ""
-                print(f"\n[============ {players} Player ============]\n")
-                while set_player_name != 3 :
-                    print(f"■-------- Player [{set_player_name}] names --------■\n")
-                    print(" 1 ) Type name")
-                    print(" 2 ) Random\n")
-                    choice = input(" >> ")
-                    
-                    # Check 
-                    if choice.lower().strip() == "1" :
-                        print("\n[==========  Player ==========]\n")
-                        print("■-------- Player name --------■\n")
-                        print("Input your name")
-                        name = input(" >> ")
-                        name = str.upper(name[0])+str(name[1:None])
-                    else :
-                        name = names.get_first_name()
-                        name = str.upper(name[0])+str(name[1:None])
-
-                    if set_player_name == 1 :
-                        set_player_name += 1
-                        player_one_name = name
-                        return player_one_name
-                    else :
-                        set_player_name += 1
-                        player_two_name = name
-                        return player_two_name
-
-                print(f"Player one : {player_one_name}\n")
-                print(f"Player two : {player_two_name}")
-
+                pass
             elif players == "3" :
                 pass
 
