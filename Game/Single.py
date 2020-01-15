@@ -16,7 +16,16 @@ draw   = 0
 rounds = 1
 
 class Single :
-
+    def Hardships(set_difficulity, name) :
+        os.system("cls")
+        if set_difficulity == "1" :
+            return Single.Easy(name)
+        elif set_difficulity == "2" :
+            return Single.Normal(name)
+        elif set_difficulity == "3" :
+            return Single.Hard(name)
+        else :
+            return Single.Master(name)
 
     ## Easy Mode
     def Easy(player) :
