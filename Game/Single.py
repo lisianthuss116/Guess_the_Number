@@ -225,7 +225,7 @@ class Single :
             player_guess = int(input(">> "))
             # Computer
             print(f"[Computer] Guess the number")
-            com_guess = int(Single.random_num(rand_num-5, rand_num))
+            com_guess = int(Single.random_num(rand_num-2, rand_num))
 
             loader.time_sleep(1, 3)
             print(">> " + str(com_guess))
