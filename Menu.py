@@ -15,7 +15,7 @@ def Menu() :
     print("|                             |")
     print("| 1 ) Singleplayer [computer] |")
     print("| 2 ) Multiplayer  [max:4]    |")
-    print("| 3 ) Help                    |")
+    print("| 3 ) How to play             |")
     print("| 4 ) Exit                    |")
     print("|                             |")
     print("|                             |\n")
@@ -34,4 +34,8 @@ def Choice(select, is_play = False) :
     elif select == "2" :
         loader.time_sleep(2, 3, True)
         Selection.Multiplayer(is_play, play_type = select)
+
+    elif select == "3" :
+        loader.time_sleep(2, 3, True)
+        Selection.Help(is_play = False)
         
