@@ -1,4 +1,4 @@
-# Guess_the_Number
+# Guess the Number
 This is just remake from my old repo
 
 just a little game which u should guess the number
