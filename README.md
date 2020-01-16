@@ -13,5 +13,7 @@ just a little game which u should guess the number
   
 
 After download the requirements, you can start using command
+
     start python main.py or
+    
     python3 main.py
