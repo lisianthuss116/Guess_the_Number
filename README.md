@@ -1,7 +1,6 @@
 # Guess the Number
-This is just remake from my old repo
 
-just a little game which u should guess the number
+just a little game which you should guess the number
 
 # Requirements to play 
 
