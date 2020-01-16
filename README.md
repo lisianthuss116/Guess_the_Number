@@ -12,7 +12,7 @@ just a little game which u should guess the number
     python -m pip install names
   
 
-After download the requirements, you can start using command
+After download the requirements, you can start playing using command
 
     start python main.py or
     
