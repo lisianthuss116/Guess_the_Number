@@ -29,7 +29,10 @@ def estimated_random_normal_tens(random_number, com_guess) :
 
         get_number = str(fin_first_digit_num) + str(fin_last_digit_num)
         get_number = int(get_number)
-        guess_num  = random.randint(get_number-10, get_number)
+        guess_num  = 0
+
+        if guess_num == 0 :
+            guess_num += 1
 
         com_guess  = guess_num
         return com_guess
