@@ -2,6 +2,11 @@ import os, sys, random
 sys.path.append('../')
 import loaders as loader
 from termcolor import colored, cprint
+from Game.game_mode import Easy as EasyMode
+from Game.game_mode import Normal as NormalMode
+# from Game.game_mode import Hard as HardMode
+# from Game.game_mode import Master as MasterMode
+
 
 # Initialize player info
 player_guess = 0
@@ -16,138 +21,18 @@ draw   = 0
 rounds = 1
 
 class Single :
-    def Hardships(set_difficulity, name) :
-        os.system("cls")
-        if set_difficulity == "1" :
-            return Single.Easy(name)
-        elif set_difficulity == "2" :
-            return Single.Normal(name)
-        elif set_difficulity == "3" :
-            return Single.Hard(name)
-        else :
-            return Single.Master(name)
 
     ## Easy Mode
     def Easy(player) :
         global player_guess, player_win, com_guess, com_win, draw, rounds
-
-        print("\n[======= Single Player =======]\n")
-        print("■----- Difficulity: Easy -----■")
-        print(f"■----- Player-name: {player}\n")
-
-        while rounds != 6 :
-            rand_num = Single.random_num(1, 10)
-            loader.time_sleep(1, 2)
-            cprint(f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
-            print("Guess the number between 1 - 10\n")
-
-            # [Player and Computer guessing]
-            # Player
-            print(f"[{player}] Guess the number")
-            player_guess = int(input(">> "))
-            # Computer
-            print(f"[Computer] Guess the number")
-            com_guess = Single.random_num(1, 10)
-            loader.time_sleep(1, 4)
-            print(">> " + str(com_guess))
-            
-            # [ Draw rounds ]
-            if player_guess == rand_num == com_guess :
-                draw = draw + 1
-                com_win = com_win + 1
-                player_win = player_win + 1
-                Single.draw_round(rand_num)
-
-            # [ Player win rounds ]
-            elif player_guess == rand_num :
-                player_win = player_win + 1
-                Single.player_round_win(player, rand_num)
-
-            # [ Computer win rounds ]
-            elif com_guess == rand_num :
-                com_win = com_win + 1
-                Single.com_round_win(rand_num)
-
-            # [ Both wrong ]
-            else :
-                Single.wrong(rand_num)
-
-            rounds = rounds + 1
-            ## Rounds Ended ##
-        
-        ## Count the numbers of wins
-        # [ Draw ]
-        if player_win == com_win :
-            Single.draw(player, player_win, com_win)
-        # [ Player win ]
-        elif player_guess > com_win :
-            Single.player_win(player, player_win, com_win)
-        # [ Computer win ]
-        else :
-            Single.computer_win(player, player_win, com_win)
+        EasyMode.Easy(player_guess,player_win,com_guess,com_win,draw,rounds, player)
 
         
     ## Normal Mode
     def Normal(player) :
         global player_guess, player_win, com_guess, com_win, draw, rounds
-
-        print("\n[======= Single Player =======]\n")
-        print("■---- Difficulity: Normal ----■")
-        print(f"■----- Player-name: {player}\n")
-
-        while rounds != 6 :
-            rand_num = Single.random_num(1, 20)
-            loader.time_sleep(1, 2)
-            cprint(f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
-            print("Guess the number between 1 - 20\n")
-
-            # [ Player and Computer guessing ]
-            # Player
-            print(f"[{player}] Guess the number")
-            player_guess = int(input(">> "))
-            # Computer
-            print(f"[Computer] Guess the number")
-            if rand_num in range(1, 10) :
-                com_guess = int(Single.random_num(1, 10))
-            else :
-                com_guess = int(Single.random_num(11, rand_num))
-            loader.time_sleep(1, 3)
-            print(">> " + str(com_guess))
-
-            # [ Draw rounds ]
-            if player_guess == rand_num == com_guess :
-                draw = draw + 1
-                com_win = com_win + 1
-                player_win = player_win + 1
-                Single.draw_round(rand_num)
-
-            # [ Player win rounds ]
-            elif player_guess == rand_num :
-                player_win = player_win + 1
-                Single.player_round_win(player, rand_num)
-
-            # [ Computer win rounds ]
-            elif com_guess == rand_num :
-                com_win = com_win + 1
-                Single.com_round_win(rand_num)
-
-            # [ Both wrong ]
-            else :
-                Single.wrong(rand_num)
-
-            rounds = rounds + 1
-            ## Rounds Ended ##
-
-        ## Count the numbers of wins
-        # [ Draw ]
-        if player_win == com_win :
-            Single.draw(player, player_win, com_win)
-        # [ Player win ]
-        elif player_win > com_win :
-            Single.player_win(player, player_win, com_win)
-        # [ Computer win ]
-        else :
-            Single.computer_win(player, player_win, com_win)
+        NormalMode.Normal(player_guess,player_win,com_guess,com_win,draw,rounds, player)
+        
 
                 
     ## Hard Mode
@@ -309,27 +194,29 @@ class Single :
         print("\t-- Number : " + str(number)), loader.time_sleep(1, 2)
     
 
-    ## METHOD WINNER
+    ## Game RESULTS 
+    # Player is win
     @staticmethod
-    # Player win
     def player_win(player, player_win, com_win) :
-        loader.loading_message()
+        loader.collecting_data()
         cprint(f"■-------- {player} Win ! --------■\n", 'green', file=sys.stderr)
         print(f"■ [{player}] Rounds win : " + str(player_win))
         print(f"■ [Computer] Rounds win : " + str(com_win))
         print(f"■")
+
+    # Computer is win
     @staticmethod
-    # Computer win
     def computer_win(player, player_win, com_win) :
-        loader.loading_message()
+        loader.collecting_data()
         cprint(f"■-------- Computer Win ! --------■\n", 'green', file=sys.stderr)
         print(f"■ [Computer] Rounds win : " + str(com_win))
         print(f"■ [{player}] Rounds win : " + str(player_win))
         print(f"■")
+        
+    # Player and Computer is draw
     @staticmethod
-    # Draw
     def draw(player, player_win, com_win) :
-        loader.loading_message()
+        loader.collecting_data()
         cprint(f"■-------- Draw ! --------■\n", 'green', file=sys.stderr)
         print(f"■ [Computer] Rounds win : " + str(com_win))
         print(f"■ [{player}] Rounds win : " + str(player_win))
