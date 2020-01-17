@@ -1,38 +1,87 @@
 import random, os, sys
 
-def estimated_random_normal_tens(random_number, com_guess) :
-    rand_num  = random.randint(random_number, random_number)
-    com_guess = com_guess
+def estimate_and_set_random(min_value, max_value) :
+    rand_num = random.randint(min_value, max_value)
+    get_rand = str(rand_num)
 
-    # number below 10
-    if len(str(rand_num)) == 1 :
-        com_guess = random.randint(1, 10)
+    # Master
+    if rand_num in range(500, 999) :
+        if len(str(rand_num)) == 3 :
+            first_digit  = get_rand[0]
+            second_digit = get_rand[1]
+            last_digit   = get_rand[2]
+            estimated    = estimate_tens(second_digit, last_digit)
 
-        return com_guess
+            if estimated == 100 :
+                first_digit  = int(first_digit)
+                first_digit += 1
+                guess_num = str(first_digit) + str(str(estimated)[-2:])
+                guess_num = int(guess_num)
+                guess    = random.randint(guess_num - 10, guess_num)
+
+                return guess
+            
+            else :
+                guess_num = str(first_digit) + str(str(estimated)[-2:])
+                guess_num = int(guess_num)
+                guess   = random.randint(guess_num - 5, guess_num + 5)
+
+                return guess
     
-    # number 10 and above
-    else :
-        get_num = str(rand_num)
-        first_digit_num = str(get_num[0])
-        fin_first_digit_num = int(first_digit_num)
+    # Hard
+    elif rand_num in range(100, 499) :
+        if len(str(rand_num)) == 3 :
+            first_digit  = get_rand[0]
+            second_digit = get_rand[1]
+            last_digit   = get_rand[2]
+            estimated    = estimate_tens(second_digit, last_digit)
 
-        last_digit_num  = str(str(get_num[1:None]))
-        fin_last_digit_num  = int(last_digit_num)
+            if estimated == 500 :
+                first_digit  = int(first_digit)
+                first_digit += 1
+                guess_num = str(first_digit) + str(str(estimated)[-2:])
+                guess_num = int(guess_num)
+                guess    = random.randint(guess_num - 10, guess_num - 1)
 
-        if fin_last_digit_num > 5 or fin_last_digit_num == 5:
-            fin_last_digit_num = 0
-            if fin_last_digit_num == 0 :
-                fin_first_digit_num += 1
-        
-        elif fin_last_digit_num < 5 :
-            fin_last_digit_num = 0
+                return guess
+            
+            else :
+                get_num = str(first_digit) + str(str(estimated)[-2:])
+                guess   = random.randint(int(get_num)-5, int(get_num)+5)
 
-        get_number = str(fin_first_digit_num) + str(fin_last_digit_num)
-        get_number = int(get_number)
-        guess_num  = 0
+                return guess
 
-        if guess_num == 0 :
-            guess_num += 1
+    # Normal
+    elif rand_num in range(11, 99) :
+        if len(str(rand_num)) == 2 :
+            first_digit  = get_rand[0]
+            second_digit = get_rand[1]
+            get_tens     = rand_num
+            estimated    = estimate_tens(first_digit, second_digit)
 
-        com_guess  = guess_num
-        return com_guess
+            if estimated == 100 :
+                guess = random.randint(estimated - 10, estimated - 1)
+                return guess
+
+            else :
+                guess = random.randint(estimated - 5, estimated + 5)
+                return guess
+
+    # Easy
+    elif rand_num in range(1, 10) :
+        return random.randint(min_value, max_value)
+
+def estimate_tens(first_digit_num, second_digit_num) :
+    first_digit  = int(first_digit_num)
+    second_digit = int(second_digit_num) 
+
+    if second_digit > 5 or second_digit == 5:
+        second_digit = 0
+        if second_digit == 0 :
+            first_digit += 1
+    
+    elif second_digit < 5 :
+        second_digit = 0
+
+    estimated = str(first_digit) + str(second_digit)
+    return int(estimated)
