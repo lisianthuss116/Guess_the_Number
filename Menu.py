@@ -1,40 +1,39 @@
-import time, random
-import sys
+import sys, os, time, random
 import loaders as loader
-from os import system
+from Views.Menus import MenuView
 from Selection import Selection
 from termcolor import colored, cprint
 
-choice    = None
-is_play   = False
-system("cls")
-
+# Main menu
 def Menu() :
-    print("\n[===== GUESS the NUMBERS =====]\n")
-    print("■----------- Menus -----------■")
-    print("|                             |")
-    print("| 1 ) Singleplayer [computer] |")
-    print("| 2 ) Multiplayer  [max:4]    |")
-    print("| 3 ) How to play             |")
-    print("| 4 ) Exit                    |")
-    print("|                             |")
-    print("|                             |\n")
+    is_play   = False
+    os.system("cls")
+
+    # display main menu 
+    MenuView.mainMenu()
+
+    # player select menu
     select = input(">> ")
     select = str(select.lower().strip())
+
+    # direct to selected player select menu
     return Choice(select, is_play = True)
 
 
 def Choice(select, is_play = False) :
     loader.loading_message('green')
 
+    # Player choice Single-player
     if select == "1" :
         loader.time_sleep(2, 3, True)
-        Selection.Single_player(is_play, play_type = select)
+        Selection.SinglePlayer(is_play)
 
+    # Player choice Multi-player
     elif select == "2" :
         loader.time_sleep(2, 3, True)
-        Selection.Multiplayer(is_play, play_type = select)
+        Selection.Multiplayer(is_play)
 
+    # Player choice How to play
     elif select == "3" :
         loader.time_sleep(2, 3, True)
         Selection.Help(is_play = False)
