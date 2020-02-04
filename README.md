@@ -13,8 +13,4 @@ just a little game which you should guess the number
 
 After installing the requirements, you can start playing using command
 
-    start python main.py 
-    
-    or
-    
-    python3 main.py
+    start python main.py or python3 main.py
