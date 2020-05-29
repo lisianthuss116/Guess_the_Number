@@ -1,16 +1,18 @@
-# Guess the Number
+**Guess number**
 
 just a little game which you should guess the number
 
-# Requirements to play 
+requirements
 
-@ Python 3 or up
+    python >= 3.0.0
+
+install depedencies
 
     python -m pip install termcolor
 
     python -m pip install names
-  
 
-After installing the requirements, you can start playing using command
+play
 
-    start python main.py or python3 main.py
+    python main.py
+
