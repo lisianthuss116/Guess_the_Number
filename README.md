@@ -2,17 +2,13 @@
 
 just a little game which you should guess the number
 
-requirements
-
-    python >= 3.0.0
 
 install depedencies
 
-    python -m pip install termcolor
+    python3 pip install -r requirements.txt
 
-    python -m pip install names
 
-play
+run
 
     python main.py
 
