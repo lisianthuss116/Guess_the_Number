@@ -5,32 +5,32 @@ from termcolor import colored, cprint
 from Game import Single as SinglePlayer
 from Game.game_mode import estimated_rand as estimate
 
-def Easy(player_guess,player_win,com_guess,com_win,draw,rounds,player) :
+def normal(player_guess,player_win,com_guess,com_win,draw,rounds,player) :
     print(f"\n[======= Single Player =======]\n")
-    print(f"■----- Difficulity: Easy -----■")
+    print(f"■---- Difficulity: Normal ----■")
     print(f"■----- Player-name: {player}\n")
 
     while rounds != 6 :
-        rand_num = random.randint(1, 10)
+        rand_num = random.randint(11, 99)
         loader.time_sleep(1, 2)
         cprint(f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
-        print("Guess the number between 1 - 10\n")
+        print("Guess the number between 11 - 99\n")
 
-        # [Player and Computer guessing]
+        # [ Player and Computer guessing ]
         # Player
         print(f"[{player}] Guess the number")
         player_guess = int(input(">> "))
-        
+
         # Computer
         print(f"[Computer] Guess the number")
-        com_guess = estimate.estimate_and_set_random(1, 10)
-        loader.time_sleep(1, 4)
+        com_guess = estimate.estimate_and_set_random(rand_num, rand_num)
+        loader.time_sleep(1, 3)
         print(f">> {str(com_guess)}")
-        
+
         # [ Draw rounds ]
         if player_guess == rand_num == com_guess :
-            draw       += 1
-            com_win    += 1
+            draw        = draw + 1
+            com_win     = com_win + 1
             player_win += 1
             SinglePlayer.Single.draw_round(rand_num)
 
@@ -50,7 +50,7 @@ def Easy(player_guess,player_win,com_guess,com_win,draw,rounds,player) :
 
         rounds += 1
         ## Rounds Ended ##
-    
+
     ## Count the numbers of wins
     # [ Draw ]
     if player_win == com_win :

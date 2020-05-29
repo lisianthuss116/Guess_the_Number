@@ -1,11 +1,13 @@
-import os, sys
-sys.path.append('../')
 import Selection
+import os
+import sys
+sys.path.append('../')
 
-class MenuView :
-    
-    # Main menu view 
-    def mainMenu() :
+
+class MenuView:
+
+    # Main menu view
+    def mainMenu():
         print("\n[===== GUESS the NUMBERS =====]\n")
         print("■----------- Menus -----------■")
         print("|                             |")
@@ -14,10 +16,10 @@ class MenuView :
         print("| 3 ) How to play             |")
         print("| 4 ) Exit                    |")
         print("|                             |")
-        print("|                             |\n")        
+        print("|                             |\n")
 
-    # Singleplayer menu view 
-    def singlePlayerview() :
+    # Singleplayer menu view
+    def singlePlayerview():
         print("\n[======= Single Player =======]\n")
         print("■-------- Difficulity --------■")
         print("|                             |")
@@ -27,9 +29,9 @@ class MenuView :
         print("| 4 ) Master                  |")
         print("|                             |")
         print("|                             |\n")
-    
-    # Multiplayer menu view 
-    def multiplayer_view() :
+
+    # Multiplayer menu view
+    def multiplayer_view():
         print("\n[======== Multiplayer ========]\n")
         print("■---------- Players ----------■")
         print("|                             |")
@@ -38,23 +40,24 @@ class MenuView :
         print("| 3 ) 3 player                |")
         print("| 4 ) 4 player                |")
         print("|                             |\n")
-        
+
         # player input [set how many player will play (max : 4)]
         players = input(">> ")
         players = str(players.lower().strip())
-        
+
         # jokes? , yeah i think
-        if players == "1" :
+        if players == "1":
             loader.time_sleep(2, 3, True)
-            print("[=== Really ?, No. u can't play alone in multiplayer, do you have any friends dude ? ===]\n")
+            print(
+                "[=== Really ?, No. u can't play alone in multiplayer, do you have any friends dude ? ===]\n")
             print("# Back [y/n]")
             back = input(">> ")
-            if str(back.lower().strip()) == "y" :
+            if str(back.lower().strip()) == "y":
                 loader.loading_message()
-                Selection.Multiplayer(is_play = True)
-    
-    # Help menu view 
-    def help_view() :
+                Selection.Multiplayer(is_play=True)
+
+    # Help menu view
+    def help_view():
         print("\n[======= Help =======]\n")
         print("■-------- Help --------■")
         print("|                      |")
