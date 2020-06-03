@@ -2,12 +2,15 @@ import os
 import sys
 import random
 
-from package.game_config.game_mode import estimated_rand as estimate
-from package.helper import loading
-from package.game_config.services import __
-from package.game_config.services import vars
-
 from termcolor import colored, cprint
+
+from src.helper import loading
+
+from src.configurations._game.game_mode import estimated_rand as estimate
+from src.configurations._game.services import __
+from src.configurations._game.services import vars
+
+
 
 player_guess = vars.PLAYER_GUESS
 player_wins = vars.PLAYER_WIN

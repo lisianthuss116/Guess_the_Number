@@ -1,6 +1,6 @@
 import names
 
-from package.helper import loading
+from src.helper import loading
 
 
 class PlayerName:
@@ -53,7 +53,6 @@ class PlayerName:
                 player_names[_] = player_names(player=i)
 
             return player_names
-
 
     def check_how_many_players(players, name):
         loading.loading_message('green')

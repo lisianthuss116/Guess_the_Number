@@ -1,19 +1,23 @@
-import os, sys, random  
-sys.path.append('../../')
-import loaders as loader
-from termcolor import colored, cprint
-from Game import Single as SinglePlayer
 from Game.game_mode import estimated_rand as estimate
+from Game import Single as SinglePlayer
+from termcolor import colored, cprint
+import loaders as loader
+import os
+import sys
+import random
+sys.path.append('../../')
 
-def normal(player_guess,player_win,com_guess,com_win,draw,rounds,player) :
+
+def normal(player_guess, player_win, com_guess, com_win, draw, rounds, player):
     print(f"\n[======= Single Player =======]\n")
     print(f"■---- Difficulity: Normal ----■")
     print(f"■----- Player-name: {player}\n")
 
-    while rounds != 6 :
+    while rounds != 6:
         rand_num = random.randint(11, 99)
         loader.time_sleep(1, 2)
-        cprint(f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
+        cprint(
+            f"■■■■------ Round : {str(rounds)} ------■■■■", 'green', file=sys.stderr)
         print("Guess the number between 11 - 99\n")
 
         # [ Player and Computer guessing ]
@@ -28,38 +32,38 @@ def normal(player_guess,player_win,com_guess,com_win,draw,rounds,player) :
         print(f">> {str(com_guess)}")
 
         # [ Draw rounds ]
-        if player_guess == rand_num == com_guess :
-            draw        = draw + 1
-            com_win     = com_win + 1
+        if player_guess == rand_num == com_guess:
+            draw = draw + 1
+            com_win = com_win + 1
             player_win += 1
             SinglePlayer.Single.draw_round(rand_num)
 
         # [ Player win rounds ]
-        elif player_guess == rand_num :
+        elif player_guess == rand_num:
             player_win += 1
             SinglePlayer.Single.player_round_win(player, rand_num)
 
         # [ Computer win rounds ]
-        elif com_guess == rand_num :
+        elif com_guess == rand_num:
             com_win += 1
             SinglePlayer.Single.com_round_win(rand_num)
 
         # [ Both wrong ]
-        else :
+        else:
             SinglePlayer.Single.wrong(rand_num)
 
         rounds += 1
         ## Rounds Ended ##
 
-    ## Count the numbers of wins
+    # Count the numbers of wins
     # [ Draw ]
-    if player_win == com_win :
+    if player_win == com_win:
         return SinglePlayer.Single.draw(player, player_win, com_win)
 
     # [ Player win ]
-    elif player_win > com_win :
+    elif player_win > com_win:
         return SinglePlayer.Single.player_win(player, player_win, com_win)
 
     # [ Computer win ]
-    else :
+    else:
         return SinglePlayer.Single.computer_win(player, player_win, com_win)

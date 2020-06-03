@@ -2,14 +2,11 @@ import os
 import sys
 import random
 
-from package.game_config.game_mode import easy as EasyMode
-# from package.game_config.game_mode import normal as NormalMode
-# from package.game_config.game_mode import Hard as HardMode
-# from package.game_config.game_mode import Master as MasterMode
-from package.helper import loading
-from package.game_config.services import __
-
 from termcolor import colored, cprint
+
+from src.configurations._game.difficulity.easy import easy
+from src.configurations._game.services import __
+from src.helper import loading
 
 
 def play_mode(mode, player_name, round_played):
@@ -17,23 +14,23 @@ def play_mode(mode, player_name, round_played):
 
 class SinglePlayer:
 
-    # Easy Mode
+    # easy mode
     def easy(player_name, round_played):
         loading.time_wait(1, 4)
         loading.loading_message_tips()
-        EasyMode.easy(player_name, round_played)
+        easy(player_name, round_played)
 
-    # Normal Mode
+    # normal mode
     def normal(player_name, round_played):
         # NormalMode.normal()
         pass
 
-    # Hard Mode
+    # hard mode
     def hard(player_name, round_played):
         # HardMode.Hard()
         pass
 
-    # Master Mode
+    # master mode
     def master(player):
         pass
         # print("\n[======= Single Player =======]\n")

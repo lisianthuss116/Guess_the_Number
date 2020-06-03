@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 import Menu as menus
 import loaders as loader
 from Game.Single import Single
@@ -6,12 +7,13 @@ from Player.Player import Player
 import Views.Menus as Menu
 # from Game.Multiplayer import Multiplayer
 
-class Selection :
-    
+
+class Selection:
+
     # Selected single player
-    def SinglePlayer(is_play) :
+    def SinglePlayer(is_play):
         # check if player is play
-        if is_play :
+        if is_play:
 
             # display single-player menu
             Menu.MenuView.singlePlayerview()
@@ -22,37 +24,37 @@ class Selection :
 
             # player create name
             name = Player.set_player_name(
-                game_mode = "singleplayer", 
-                players = None)
-            
+                game_mode="singleplayer",
+                players=None)
+
             # check if player has create name
-            if name :
+            if name:
                 # direct to check-difficulity
                 Selection.Difficulity(difficulity, name)
 
     # Selected multiplayer
-    def Multiplayer(is_play) :
+    def Multiplayer(is_play):
         # check if player is play
-        if is_play :
+        if is_play:
 
             # display multiplayer menu
             Menu.MenuView.multiplayer_view()
 
             # all player create name
             name = Selection.set_player_name(
-                game_mode = "multiplayer", 
-                players = players)
+                game_mode="multiplayer",
+                players=players)
 
             # if player has create name direct to check players
-            if name :
+            if name:
                 Player.check_how_many_players(players, name)
-    
-    # Selected Help
-    def Help(is_play) :
-        # check if player is not play
-        if not is_play :
 
-            # diplay help menu 
+    # Selected Help
+    def Help(is_play):
+        # check if player is not play
+        if not is_play:
+
+            # diplay help menu
             Menu.MenuView.help_view()
             exit = input(">> ")
 
@@ -66,12 +68,11 @@ class Selection :
         menus.Menu()
 
     @staticmethod
-    def Difficulity(difficulity, name) :
+    def Difficulity(difficulity, name):
         loader.loading_message('green')
 
         diff = int(difficulity)
-        hardship = [None,'Easy', 'Normal', 'Hard', 'Master']
+        hardship = [None, 'Easy', 'Normal', 'Hard', 'Master']
         set_hardship = getattr(Single, f'{hardship[diff]}')
-        
+
         set_hardship(name)
-             
