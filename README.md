@@ -1,4 +1,4 @@
-**Guess number**
+## guess the number
 
 Just a little game which you should guess the number
 
