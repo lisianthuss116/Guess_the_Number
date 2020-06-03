@@ -1,7 +1,7 @@
 import random
 import sys
 
-from package.helper import loading
+from src.helper import loading
 
 from termcolor import colored, cprint
 

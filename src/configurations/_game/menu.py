@@ -1,8 +1,10 @@
-from package.game_menu import view
-from package.helper import loading
-from package.game_config import singleplayer as GameSinglePlayer
-from package.game_config import multiplayer as GameMultiplayer
-from package.player_config.player_name import PlayerName
+from src.helper import loading
+
+from src.configurations._game import view
+from src.configurations._game.mode import singleplayer
+from src.configurations._game.mode import multiplayer
+
+from src.configurations._player.player_name import PlayerName
 
 is_play = False
 mode = ""
@@ -77,7 +79,7 @@ class GameMenu:
             name = PlayerName.set_player_name(mode)
 
             # start play
-            GameSinglePlayer.play_mode(diffc, name, round_played)
+            singleplayer.play_mode(diffc, name, round_played)
 
     def multiplayer():
         if is_play:
@@ -95,7 +97,7 @@ class GameMenu:
             print("Under development ~")
             print("You will returned to start menu in 5s")
             loading.time_wait(1, 5)
-            GameSinglePlayer.start_menu()
+            GameMenu.start_menu()
 
     def help():
         pass
