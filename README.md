@@ -1,14 +1,14 @@
-**Guess number**
+## guess the number
 
-just a little game which you should guess the number
+Just a little game which you should guess the number
 
 
-install depedencies
+## install depedencies
 
     python3 pip install -r requirements.txt
 
 
-run
+## run
 
     python main.py
 
