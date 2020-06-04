@@ -22,8 +22,6 @@ rounds = vars.TOTAL_ROUND
 def easy(player_name, round_played):
     global player_guess, player_wins, com_guess, computer_wins, draw, rounds
 
-    print(rounds, round_played)
-
     print("[======= Single Player =======]")
     print("■=============================■")
     print("■----- Difficulity: Easy -----■")
