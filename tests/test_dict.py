@@ -15,3 +15,25 @@
 
 
 # check()
+
+
+# class Testing:
+#     x = 0
+#     y = 0
+
+#     def win(self):
+#         choices = {
+#             "player": 'y',
+#             "computer": 'x',
+#         }
+
+#         xuser = getattr(Testing, choices.get("player")) + 1
+#         return xuser
+
+
+
+
+# obj = Testing()
+
+# print(obj.win())
+# print(getattr(Testing, 'x'))

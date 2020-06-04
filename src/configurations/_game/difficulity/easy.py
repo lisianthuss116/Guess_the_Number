@@ -6,7 +6,7 @@ from termcolor import colored, cprint
 
 from src.helper import loading
 
-from src.configurations._game.services import estimated_rand as estimate
+from src.configurations._game.services.estimate import estimate
 from src.configurations._game.services import __
 from src.configurations._game.services import vars
 
@@ -43,7 +43,7 @@ def easy(player_name, round_played):
         print("\n")
         # computer turn to guess
         print(f"[Computer] Guess the number")
-        com_guess = estimate.estimate_and_set_random(1, 10)
+        com_guess = estimate("easy")
         print(f">> {str(com_guess)}")
 
         print("\n")
