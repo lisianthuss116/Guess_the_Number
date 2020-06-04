@@ -12,8 +12,8 @@ class EstimateRandomTest(unittest.TestCase):
         number = random.randint(xmin, xmax)
 
         def template(number, _min, _max):
-            new_min = 1 if number - 5 == 0 else abs(number - 5)
-            new_max = number if number > number + 5 else number + 5
+            new_min = number if number - 5 == 0 or number - 5 < number else abs(number - 5)
+            new_max = number if number + 5 > _max else number + 5
             new_number = random.randint(new_min, new_max)
 
             assert_err = f"number must be between {_min} and {_max} | the number {new_number} | the actual-number {number}."
@@ -29,7 +29,7 @@ class EstimateRandomTest(unittest.TestCase):
 
         """normal"""
         if number in range(20, 99):
-            template(number=number, _min=21, _max=99)
+            template(number=number, _min=20, _max=99)
 
         """easy"""
         if number in range(1, 19):
@@ -41,15 +41,15 @@ class EstimateRandomTest(unittest.TestCase):
 
     def test_one_to_ten(self):
         # easy
-        # check if the random number is between 1 and 10
-        self.get_the_closest_value_of_random_number(1, 10)
+        # check if the random number is between 1 and 19
+        self.get_the_closest_value_of_random_number(1, 19)
 
     def test_eleven_to_nine2(self):
         # normal
-        # check if the random number is between 11 and 99
-        self.get_the_closest_value_of_random_number(11, 99)
+        # check if the random number is between 20 and 99
+        self.get_the_closest_value_of_random_number(20, 99)
 
-    def test_eleven_to_nine2(self):
+    def test_onehundred_to_fourninenine(self):
         # hard
         # check if the random number is between 100 and 499
         self.get_the_closest_value_of_random_number(100, 499)
