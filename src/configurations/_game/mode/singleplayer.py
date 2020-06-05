@@ -36,7 +36,7 @@ class SinglePlayer:
         hard(player_name, round_played)
 
     # master mode
-    def master(player):
+    def master(player_name, round_played):
         loading.time_wait(1, 4)
         loading.loading_message_tips()
         master(player_name, round_played)
