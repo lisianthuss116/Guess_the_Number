@@ -7,7 +7,6 @@ class PlayerName:
     def set_player_name(mode, player=None):
         def player_names(player=None):
             loading.player_loading()
-            print("\n\n")
 
             if player:
                 print("[========== Player {player} ===========]")
@@ -20,6 +19,7 @@ class PlayerName:
             print("| 1 ) Type name               |")
             print("| 2 ) Random                  |")
             print("|                             |")
+            print("■--------.-----------.--------■")
 
             print("\n\n")
             choice = str(input(">> "))
