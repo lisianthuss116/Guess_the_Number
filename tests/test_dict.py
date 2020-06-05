@@ -16,24 +16,30 @@
 
 # check()
 
+class Testing:
+    def __init__(self):
+        self.x = 0
+        self.y = 0
 
-# class Testing:
-#     x = 0
-#     y = 0
+    def win(self):
+        choices = {
+            "player": 'y',
+            "computer": 'x',
+        }
 
-#     def win(self):
-#         choices = {
-#             "player": 'y',
-#             "computer": 'x',
-#         }
-
-#         xuser = getattr(Testing, choices.get("player")) + 1
-#         return xuser
-
-
+        xuser = choices.get("player")
+        return xuser
 
 
-# obj = Testing()
+obj = Testing()
+# atr = obj.win()
 
-# print(obj.win())
-# print(getattr(Testing, 'x'))
+# print(obj.__dict__)
+
+print(getattr(Testing, obj.win()))
+
+# new_val = getattr(Testing, atr) + 1
+# print(f"new val : {new_val}")
+# print(getattr(Testing, atr) = new_val)
+
+# print(Testing.y)

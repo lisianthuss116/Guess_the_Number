@@ -19,19 +19,19 @@ draw = vars.ROUND_DRAW
 rounds = vars.TOTAL_ROUND
 
 
-def hard(player_name, round_played):
+def master(player_name, round_played):
     global player_guess, player_wins, com_guess, computer_wins, draw, rounds
 
-    print("[======= Single Player =======]")
-    print("■=============================■")
-    print("■----- Difficulity: Hard -----■")
+    print("[======== Single Player ========]")
+    print("■===============================■")
+    print("■----- Difficulity: Master -----■")
     print("\n")
     print("■ Player-name: {}".format(player_name))
-    print("■ Number between 100 - 499")
+    print("■ Number between 500 - 999")
     print("\n")
 
     while rounds <= round_played:
-        rnumber = random.randint(100, 499)
+        rnumber = random.randint(500, 999)
 
         cprint(
             f"■■■■------ Round : {rounds} ------■■■■", 'green', file=sys.stderr)
@@ -43,7 +43,7 @@ def hard(player_name, round_played):
         print("\n")
         # computer turn to guess
         print(f"[Computer] Guess the number\n")
-        com_guess = estimate("hard", rnumber)
+        com_guess = estimate("master", rnumber)
         print(f">> {str(com_guess)}")
 
         print("\n")
