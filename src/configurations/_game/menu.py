@@ -1,6 +1,5 @@
 from src.helper import loading
 
-from src.configurations._game import view
 from src.configurations._game.mode import singleplayer
 from src.configurations._game.mode import multiplayer
 
@@ -12,7 +11,6 @@ mode = ""
 
 class GameMenu:
     def start_menu():
-        print("\n")
         print("[===== GUESS the NUMBERS =====]")
         print("■=============================■")
         print("■----------- Menus -----------■")
@@ -22,7 +20,7 @@ class GameMenu:
         print("| 3 ) How to play             |")
         print("| 4 ) Exit                    |")
         print("|                             |")
-        print("|                             |")
+        print("■--------.-----------.--------■")
 
         print("\n\n")
         print("You can choice and type 1 - 4\n")
@@ -48,7 +46,6 @@ class GameMenu:
 
     def single_player():
         if is_play:
-            print("\n")
             print("[======= Single Player =======]")
             print("■=============================■")
             print("■-------- Difficulity --------■")
@@ -58,14 +55,14 @@ class GameMenu:
             print("| 3 ) Hard                    |")
             print("| 4 ) Master                  |")
             print("|                             |")
-            print("|                             |")
+            print("■--------.-----------.--------■")
 
             print("\n\n")
-            print("You can select the difficulity by choosing 1 - 4")
+            print("You can select the difficulity by choosing 1 - 4\n")
             diffc = str(input(">> "))
 
             print("\n")
-            print("Number of rounds to be played")
+            print("Number of rounds to be played\n")
             round_played = int(input(">> "))
 
             difficulity = {
@@ -92,6 +89,7 @@ class GameMenu:
             print("| 3 ) 3 player                |")
             print("| 4 ) 4 player                |")
             print("|                             |")
+            print("■--------.-----------.--------■")
 
             print("\n\n")
             print("Under development ~")
