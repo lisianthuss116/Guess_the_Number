@@ -16,7 +16,8 @@ def main():
 
     except Exception as ex:
         raise Exception(
-            """Are you sure you have installed the depedencies ?,
+            """
+            Are you sure you have installed the depedencies ?,
             You can install it using : pip install -r requirements.txt
             """
         )
