@@ -27,7 +27,7 @@ def easy(player_name, round_played):
     print("■----- Difficulity: Easy -----■")
     print("\n")
     print("■ Player-name: {}".format(player_name))
-    print("■ Guess the number between 1 - 10")
+    print("■ Number between 1 - 10")
     print("\n")
 
     while rounds <= round_played:
@@ -37,18 +37,24 @@ def easy(player_name, round_played):
             f"■■■■------ Round : {rounds} ------■■■■", 'green', file=sys.stderr)
 
         # player turn to guess
-        print(f"[{player_name}] Guess the number")
+        print(f"[{player_name}] Guess the number\n")
         player_guess = int(input(">> "))
 
         print("\n")
         # computer turn to guess
-        print(f"[Computer] Guess the number")
-        com_guess = estimate("easy")
+        print(f"[Computer] Guess the number\n")
+        com_guess = estimate("easy", rnumber)
         print(f">> {str(com_guess)}")
 
         print("\n")
-        __.result_of_round(rnumber, player_name, player_guess,
-                           com_guess, player_wins, computer_wins)
+        winner = __.result_of_round(
+            rnumber, player_name, player_guess, com_guess)
+
+        if winner == "player":
+            player_wins += 1
+
+        elif winner == "computer":
+            computer_wins += 1
 
         print("\n\n")
         rounds += 1
